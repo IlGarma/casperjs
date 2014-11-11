@@ -39,6 +39,7 @@ SUPPORTED_ENGINES = {
             'webdriver-selenium-grid-hub',
             'wd',
             'w',
+            'SSLTrustAll'
         ],
         'env_varname': 'PHANTOMJS_EXECUTABLE',
         'default_exec' : 'phantomjs'
@@ -119,8 +120,12 @@ for arg in SYS_ARGS:
     found = False
     for native in ENGINE_NATIVE_ARGS:
         if arg_name == native:
-            ENGINE_ARGS.append(arg)
             found = True
+            if arg_name == "SSLTrustAll":
+                ENGINE_ARGS.append("--ignore-ssl-errors=true")
+                ENGINE_ARGS.append("--ssl-protocol=any")
+            else:
+                ENGINE_ARGS.append(arg)
     if not found and arg_name != 'engine':
         CASPER_ARGS.append(arg)
 
