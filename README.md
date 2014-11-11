@@ -62,6 +62,14 @@ Run the script:
 
 ![](http://cl.ly/image/271e2i403A0F/Capture%20d%E2%80%99%C3%A9cran%202013-01-20%20%C3%A0%2009.26.15.png)
 
+### Traffic in HTTPS
+In case of problems loading the web pages in https, you can run the test with the option
+<pre><code>--SSLTrustAll</code></pre>
+in this case CasperJS will run PhatomJS with the options
+<pre><code>--ssl-protocol=any --ignore-ssl-errors=true</code></pre>
+So for example 
+<pre><code>casperjs test example.js --SSLTrustAll</code></pre>
+
 ##Support
 
 Need help with getting CasperJS up and running? Got a time-consuming problem you want to get solved quickly?
